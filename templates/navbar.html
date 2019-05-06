@@ -1,0 +1,93 @@
+<!-- <nav class="navbar navbar-expand-sm bg-light">
+    
+    <ul  class="navbar-nav">
+        
+      
+    
+        <a class="navbar-brand" href="{% url 'home' %}">Tweetme</a>
+    </ul>
+    
+      
+      
+      
+        {% if request.user.is_authenticated %}
+        <ul class="nav navbar-nav">
+              <li><a href="{{ request.user.profile.get_absolute_url }}">Profile</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+  
+        {% else %}
+        <ul class="nav navbar-nav">
+           <li><button class="btn btn-danger"><a href="{% url 'login' %}">Login</a></button></li>
+           <li><button class="btn btn-danger"><a href="{% url 'register' %}">Register</a></button></li>
+        </ul>
+        {% endif %}
+      
+  </nav> -->
+
+
+  
+
+<!--Navbar -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+
+}
+
+.topnav a {
+  float: center;
+  color:rgb(99, 89, 89);
+  text-align: center;
+  padding:50px 50px;
+  text-decoration: none;
+  font-size: 22px;
+}
+
+
+
+
+</style>
+</head>
+<body>
+
+  {% if request.user.is_authenticated %}
+  <div class="topnav">
+      
+      <a class="navbar-brand" href="{% url 'home' %}">Tweetme</a>
+      <a href="{{ request.user.profile.get_absolute_url }}">Profile</a>
+      <a href="{% url 'logout' %}">Logout</a>
+      {% include "tweets/search_form.html" %}
+    
+  </div>
+
+
+
+
+  {% else %}
+  <div class="topnav">
+    
+    <a href="{% url 'register' %}">Register</a>
+    <a href="{% url 'login' %}">Login</a>
+    
+  </div>
+
+
+{% endif %}
+
+
+
+</body>
+</html>
